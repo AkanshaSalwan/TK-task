@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const EmployeeDetails = () => {
 
-  const []
+
   return (
     <div style={styles.container}>
       <h4 style={styles.heading1}>Hello! TechoHire</h4>

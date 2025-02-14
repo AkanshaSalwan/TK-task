@@ -1,26 +1,27 @@
-import React, { useState } from "react";
+// src/App.jsx
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import JobPost from "./components/jobDetails";
+import EmployeeDetailReview from "./components/EmployeeDetailReview";
+// Adjust the file name if needed
 
 const App = () => {
-  // Set default active section to "Employer Management"
-  const [activeSection, setActiveSection] = useState("Employer Management");
-
   return (
     <div style={styles.app}>
-      <Sidebar setActiveSection={setActiveSection} />
+      <Sidebar />
       <div style={styles.main}>
-        {/* Render Header only when active section is Employer Management */}
-        {activeSection === "Employer Management" && <Header />}
-        {activeSection === "Employer Management" ? (
-          <JobPost />
-        ) : (
-          // For any other section, show a blank white page
-          <div style={styles.blankContent}></div>
-        )}
-
-        
+        <Header />
+        {/* Example navigation link */}
+        <nav style={styles.nav}>
+          <Link to="/">Job Posts</Link> |{" "}
+          <Link to="/Empolyeedetails">Employee Detail Review</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<JobPost />} />
+          <Route path="/Empolyeedetails" element={<EmployeeDetailReview />} />
+        </Routes>
       </div>
     </div>
   );
@@ -36,9 +37,10 @@ const styles = {
     minHeight: "100vh",
     marginLeft: "250px",
   },
-  blankContent: {
-    background: "white",
-    height: "calc(100vh - 60px)", // Adjust height as needed
+  nav: {
+    padding: "10px",
+    background: "#fff",
+    marginBottom: "20px",
   },
 };
 
