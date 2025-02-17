@@ -1,6 +1,9 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const JobDetails = () => {
+  const navigate = useNavigate();
   return (
     <div style={styles.container}>
       <h4 style={styles.heading1}>Hello! TechoHire</h4>
@@ -59,16 +62,16 @@ const JobDetails = () => {
         ))}
       </div>
 
-      {/* ✅ Verification Requests & Reviews Container (Side by Side) */}
+      {/* ✅ Verification Requests & Reviews Container  */}
       <div style={styles.flexContainer}>
-        {/* ✅ Verification Requests Section (Left Side) */}
+        {/* ✅ Verification Requests Section  */}
 
         <div style={styles.verificationBox}>
           <div style={styles.verificationHeader}>
             <h3 style={styles.verificationTitle}>
               Verification Requests - Employee
             </h3>
-            <p style={styles.viewMore}>View More</p>
+            <p onClick={() => navigate("verificationDetails")} style={styles.viewMore}>View More</p>
           </div>
 
           {[
@@ -113,6 +116,7 @@ const JobDetails = () => {
                 </div>
                 <div style={styles.buttonGroup}>
                   <button style={styles.viewButton}>View Details</button>
+
                   <button style={styles.approveButton}>Approve</button>
                 </div>
               </div>
@@ -123,11 +127,17 @@ const JobDetails = () => {
           ))}
         </div>
 
-        {/* ✅ Reviews Section (Right Side) */}
+        {/* ✅ Reviews Section  */}
         <div style={styles.reviewsBox}>
           <div style={styles.reviewsHeader}>
             <h3 style={styles.reviewsTitle}>Reviews</h3>
-            <p style={{ ...styles.viewMore, textAlign: "right" }}>View More</p>
+
+            <p
+              onClick={() => navigate("/employerReviews")}
+              style={{ cursor: "pointer", color: "blue" }}
+            >
+              View More
+            </p>
           </div>
 
           {[
@@ -169,11 +179,13 @@ const JobDetails = () => {
         </div>
       </div>
 
-      {/* ✅ Employee Details Section */}
+      {/*Employee Details Section */}
       <div style={styles.employeeDetailsBox}>
         <div style={styles.employeeDetailsHeader}>
           <h3 style={styles.employeeDetailsTitle}>Employee Details</h3>
-          <p style={styles.viewMore}>View More</p>
+          <p 
+          onClick={() => navigate("/EmployeeDetails")} 
+           style={styles.viewMore}>View More</p>
         </div>
 
         <table style={styles.employeeTable}>
@@ -233,7 +245,7 @@ const JobDetails = () => {
                     <span style={styles.deleteIcon}>🗑️</span>
                   </td>
                 </tr>
-                {/* ✅ Add horizontal line between employees except the last one */}
+                {/* Add horizontal line between employees except the last one */}
                 {index < array.length - 1 && (
                   <tr>
                     <td colSpan="6" style={styles.horizontalLine1}></td>
@@ -245,7 +257,7 @@ const JobDetails = () => {
         </table>
       </div>
 
-      {/* ✅ Footer Section */}
+      {/*  Footer Section */}
       <footer style={styles.footer}>
         <p>Copyright © 2024 TechnoHire. All rights reserved.</p>
       </footer>

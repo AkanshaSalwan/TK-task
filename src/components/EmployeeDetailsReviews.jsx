@@ -1,8 +1,8 @@
 import React from "react";
-import { FaMaxcdn, FaSearch } from "react-icons/fa";
+import {  FaSearch } from "react-icons/fa";
 import filterIcon from "../assets/filter.png";
-import Pagination from "./Pagination";
-import { useState } from "react";
+import Pagination from "../components/Pagination";
+
 
 const EmployeeDetails = () => {
 

@@ -1,26 +1,37 @@
-// src/App.jsx
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import JobPost from "./components/jobDetails";
-import EmployeeDetailReview from "./components/EmployeeDetailReview";
-// Adjust the file name if needed
+import { Routes, Route } from "react-router-dom";
+import EmployeeReviews from "./components/EmployeeDetailsReviews";
+import VerificationDetails from "./components/VerificationRequestsEmployee";
+import VerificationEmployerProfile from "./components/VerificationEmployerProfile";
+import EmployeeDetails from "./components/EmployeeDetails";
+
+
 
 const App = () => {
+  // Set default active section to "Employer Management"
+  const [activeSection, setActiveSection] = useState("Employer Management");
+   
   return (
     <div style={styles.app}>
-      <Sidebar />
+      <Sidebar setActiveSection={setActiveSection} />
       <div style={styles.main}>
-        <Header />
-        {/* Example navigation link */}
-        <nav style={styles.nav}>
-          <Link to="/">Job Posts</Link> |{" "}
-          <Link to="/Empolyeedetails">Employee Detail Review</Link>
-        </nav>
         <Routes>
-          <Route path="/" element={<JobPost />} />
-          <Route path="/Empolyeedetails" element={<EmployeeDetailReview />} />
+          <Route 
+            path="/" 
+            element={
+              <>
+                {activeSection === "Employer Management" && <Header />}
+                {activeSection === "Employer Management" ? <JobPost /> : <div style={styles.blankContent}></div>}
+              </>
+            } 
+          />
+          <Route path="/employerReviews" element={<EmployeeReviews />} />
+          <Route path="/verificationDetails" element={<VerificationDetails/>}/>
+          <Route path="/verificationEmployerProfile" element={<VerificationEmployerProfile/>}/>
+          <Route path="/EmployeeDetails" element={<EmployeeDetails/>}/>
         </Routes>
       </div>
     </div>
@@ -37,10 +48,9 @@ const styles = {
     minHeight: "100vh",
     marginLeft: "250px",
   },
-  nav: {
-    padding: "10px",
-    background: "#fff",
-    marginBottom: "20px",
+  blankContent: {
+    background: "white",
+    height: "calc(100vh - 60px)", // Adjust height as needed
   },
 };
 

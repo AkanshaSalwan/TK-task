@@ -9,7 +9,10 @@ import { BsPersonSquare } from "react-icons/bs";
 
 const Sidebar = ({ setActiveSection }) => {
   const menuItems = [
-    { name: "Dashboard", icon: <MdDashboard /> },
+    {
+      name: "Dashboard",
+      icon: <MdDashboard />,
+    },
     { name: "Job Post Management", icon: <MdPostAdd /> },
     { name: "Revenue Model", icon: <RiMoneyDollarCircleLine /> },
     { name: "Subscription Management", icon: <MdSubscriptions /> },
