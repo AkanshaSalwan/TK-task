@@ -13,7 +13,7 @@ const Employees = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      width: "130%",
+      width: "110%",
       padding: "90px",
     },
     title: {
